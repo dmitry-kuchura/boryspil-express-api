@@ -1,6 +1,7 @@
 package api
 
 import (
+	"boryspil-express-api/models"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -14,24 +15,7 @@ type Trains struct {
 	Trains []Train `json:"trains"`
 }
 
-type Train struct {
-	Number              int        `json:"number"`
-	DepartureTrafficHub TrafficHub `json:"departureTrafficHub"`
-	ArrivalTrafficHub   TrafficHub `json:"arrivalTrafficHub"`
-	Segments            []Segment  `json:"segments"`
-	DepartureTime       string     `json:"departureTime"`
-	ArrivalTime         string     `json:"arrivalTime"`
-}
-
-type Segment struct {
-	DepartureTime string     `json:"departureTime"`
-	TrafficHub    TrafficHub `json:"trafficHub"`
-}
-
-type TrafficHub struct {
-	Name     string `json:"name"`
-	FullName string `json:"fullName"`
-}
+type Train = models.Train
 
 func GetTrains(w http.ResponseWriter, r *http.Request) {
 	jsonFile, err := os.Open("./data.json")
