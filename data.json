@@ -1,0 +1,176 @@
+{
+  "trains": [
+    {
+      "number": 804,
+      "departureTrafficHub": {
+        "name": "Ж/Д Вокзал",
+        "fullName": "Центральный ж/д вокзал"
+      },
+      "arrivalTrafficHub": {
+        "name": "Борисполь",
+        "fullName": "Международный аэропорт"
+      },
+      "segments": [
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "Ж/Д Вокзал",
+            "fullName": "Центральный ж/д вокзал"
+          }
+        },
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "станция Выдубичи",
+            "fullName": "ж/д станция Выдубичи"
+          }
+        },
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "станция Дарница",
+            "fullName": "ж/д станция Дарница"
+          }
+        },
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "Борисполь",
+            "fullName": "Международный аэропорт"
+          }
+        }
+      ],
+      "departureTime": "01:07",
+      "arrivalTime": "01:45"
+    },
+    {
+      "number": 808,
+      "departureTrafficHub": {
+        "name": "Ж/Д Вокзал",
+        "fullName": "Центральный ж/д вокзал"
+      },
+      "arrivalTrafficHub": {
+        "name": "Борисполь",
+        "fullName": "Международный аэропорт"
+      },
+      "segments": [
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "Ж/Д Вокзал",
+            "fullName": "Центральный ж/д вокзал"
+          }
+        },
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "станция Выдубичи",
+            "fullName": "ж/д станция Выдубичи"
+          }
+        },
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "станция Дарница",
+            "fullName": "ж/д станция Дарница"
+          }
+        },
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "Борисполь",
+            "fullName": "Международный аэропорт"
+          }
+        }
+      ],
+      "departureTime": "03:00",
+      "arrivalTime": "03:38"
+    },
+    {
+      "number": 812,
+      "departureTrafficHub": {
+        "name": "Ж/Д Вокзал",
+        "fullName": "Центральный ж/д вокзал"
+      },
+      "arrivalTrafficHub": {
+        "name": "Борисполь",
+        "fullName": "Международный аэропорт"
+      },
+      "segments": [
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "Ж/Д Вокзал",
+            "fullName": "Центральный ж/д вокзал"
+          }
+        },
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "станция Выдубичи",
+            "fullName": "ж/д станция Выдубичи"
+          }
+        },
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "станция Дарница",
+            "fullName": "ж/д станция Дарница"
+          }
+        },
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "Борисполь",
+            "fullName": "Международный аэропорт"
+          }
+        }
+      ],
+      "departureTime": "04:58",
+      "arrivalTime": "05:36"
+    },
+    {
+      "number": 814,
+      "departureTrafficHub": {
+        "name": "Ж/Д Вокзал",
+        "fullName": "Центральный ж/д вокзал"
+      },
+      "arrivalTrafficHub": {
+        "name": "Борисполь",
+        "fullName": "Международный аэропорт"
+      },
+      "segments": [
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "Ж/Д Вокзал",
+            "fullName": "Центральный ж/д вокзал"
+          }
+        },
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "станция Выдубичи",
+            "fullName": "ж/д станция Выдубичи"
+          }
+        },
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "станция Дарница",
+            "fullName": "ж/д станция Дарница"
+          }
+        },
+        {
+          "departureTime": "01:07",
+          "trafficHub": {
+            "name": "Борисполь",
+            "fullName": "Международный аэропорт"
+          }
+        }
+      ],
+      "departureTime": "05:58",
+      "arrivalTime": "06:38"
+    }
+  ]
+}
