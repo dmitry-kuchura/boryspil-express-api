@@ -18,7 +18,7 @@ type Trains struct {
 type Train = models.Train
 
 func GetTrains(w http.ResponseWriter, r *http.Request) {
-	jsonFile, err := os.Open("./data.json")
+	jsonFile, err := os.Open("./database/data.json")
 	if err != nil {
 		fmt.Println(err)
 	}
