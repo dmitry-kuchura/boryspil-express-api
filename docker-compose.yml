@@ -10,4 +10,4 @@ services:
       - "8080:8080"
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${PORT}
+      PORT: ${PORT}
