@@ -3,11 +3,13 @@ version: '3'
 services:
 
   app:
+    container_name: boryspil_express_api
     build:
       context: .
       dockerfile: ./.docker/Dockerfile
-    env_file:
-      - ./.env
+    working_dir: /app
+    volumes:
+      - .:/app
     ports:
       - "8080:8080"
     restart: unless-stopped
