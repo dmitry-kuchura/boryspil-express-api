@@ -22,12 +22,12 @@ type Trains struct {
 type Train = models.Train
 
 func GetTrains(w http.ResponseWriter, r *http.Request) {
-	jsonFile, err := os.Open("./database/data.json")
+	jsonFile, err := os.Open("./database/outbound.json")
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	fmt.Println("Successfully Opened data.json")
+	fmt.Println("Successfully Opened outbound.json")
 	defer jsonFile.Close()
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
@@ -42,12 +42,12 @@ func GetTrains(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetCurrentTrains(w http.ResponseWriter, r *http.Request) {
-	jsonFile, err := os.Open("./database/data.json")
+	jsonFile, err := os.Open("./database/outbound.json")
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	fmt.Println("Successfully Opened data.json")
+	fmt.Println("Successfully Opened outbound.json")
 	defer jsonFile.Close()
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
