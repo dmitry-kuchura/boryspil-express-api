@@ -19,14 +19,17 @@ func main() {
 	}
 
 	router := mux.NewRouter()
+	subRouters := router.PathPrefix("/api").Subrouter()
 
-	router.HandleFunc("/api/trains", api.GetTrains).Methods("GET")
+	subRouters.HandleFunc("/trains", api.GetTrains).Methods("GET")
+	subRouters.HandleFunc("/current", api.GetCurrentTrains).Methods("GET")
 
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8000" //localhost
 	}
 
+	fmt.Println("Server is listening...")
 	fmt.Println(port)
 
 	err = http.ListenAndServe(":"+port, router)
