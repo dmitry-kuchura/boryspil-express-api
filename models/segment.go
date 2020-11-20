@@ -1,6 +1,7 @@
 package models
 
 type Segment struct {
-	DepartureTime string     `json:"departureTime"`
+	ArrivalTime   *string    `json:"arrivalTime"`
+	DepartureTime *string    `json:"departureTime"`
 	TrafficHub    TrafficHub `json:"trafficHub"`
 }

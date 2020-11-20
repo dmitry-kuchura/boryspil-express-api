@@ -57,7 +57,8 @@ func GetCurrentTrains(w http.ResponseWriter, r *http.Request) {
 
 	json.Unmarshal(byteValue, &trains)
 
-	currentTime := time.Now()
+	location, _ := time.LoadLocation("Europe/Kiev")
+	currentTime := time.Now().In(location)
 
 	var data = trains.Trains
 	var current = train
