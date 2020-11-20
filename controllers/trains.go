@@ -53,7 +53,7 @@ func GetCurrentTrains(w http.ResponseWriter, r *http.Request) {
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
 	var trains Trains
-	var train Train
+	var currentTrains []Train
 
 	json.Unmarshal(byteValue, &trains)
 
@@ -61,23 +61,22 @@ func GetCurrentTrains(w http.ResponseWriter, r *http.Request) {
 	currentTime := time.Now().In(location)
 
 	var data = trains.Trains
-	var current = train
 
-	for _, v := range data {
-		trainTimeDeparture := GetTrainTimeDeparture(v)
-		trainTimeArrival := GetTrainTimeArrival(v)
+	for _, train := range data {
+		trainTimeDeparture := GetTrainTimeDeparture(train)
+		trainTimeArrival := GetTrainTimeArrival(train)
 
 		diffDeparture := currentTime.Sub(trainTimeDeparture)
 		diffArrival := currentTime.Sub(trainTimeArrival)
 
 		if !math.Signbit(diffDeparture.Minutes()) && math.Signbit(diffArrival.Minutes()) {
-			current = v
+			currentTrains = append(currentTrains, train)
 		}
 	}
 
 	resp := u.Message(true, "success")
 
-	resp["data"] = current
+	resp["data"] = currentTrains
 	u.Respond(w, resp)
 }
 
