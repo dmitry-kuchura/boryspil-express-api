@@ -23,6 +23,7 @@ func main() {
 
 	subRouters.HandleFunc("/trains", c.GetTrains).Methods("GET")
 	subRouters.HandleFunc("/current", c.GetCurrentTrains).Methods("GET")
+	subRouters.HandleFunc("/upcoming/{station}", c.GetUpcomingTrains).Methods("GET")
 
 	port := os.Getenv("PORT")
 	if port == "" {
