@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"boryspil-express-api/controllers"
+	c "boryspil-express-api/controllers"
 
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
@@ -21,8 +21,8 @@ func main() {
 	router := mux.NewRouter()
 	subRouters := router.PathPrefix("/api").Subrouter()
 
-	subRouters.HandleFunc("/trains", api.GetTrains).Methods("GET")
-	subRouters.HandleFunc("/current", api.GetCurrentTrains).Methods("GET")
+	subRouters.HandleFunc("/trains", c.GetTrains).Methods("GET")
+	subRouters.HandleFunc("/current", c.GetCurrentTrains).Methods("GET")
 
 	port := os.Getenv("PORT")
 	if port == "" {
