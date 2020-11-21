@@ -81,7 +81,8 @@ func GetCurrentTrains(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetTrainTimeDeparture(train Train) time.Time {
-	currentTime := time.Now()
+	location, _ := time.LoadLocation("Europe/Kiev")
+	currentTime := time.Now().In(location)
 
 	departureTime := strings.Split(train.DepartureTime, ":")
 	departureTimeHours, _ := strconv.Atoi(departureTime[0])
@@ -91,7 +92,8 @@ func GetTrainTimeDeparture(train Train) time.Time {
 }
 
 func GetTrainTimeArrival(train Train) time.Time {
-	currentTime := time.Now()
+	location, _ := time.LoadLocation("Europe/Kiev")
+	currentTime := time.Now().In(location)
 
 	arrivalTime := strings.Split(train.ArrivalTime, ":")
 	arrivalTimeHours, _ := strconv.Atoi(arrivalTime[0])
