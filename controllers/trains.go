@@ -2,6 +2,7 @@ package api
 
 import (
 	"encoding/json"
+	"github.com/gorilla/mux"
 	"math"
 	"net/http"
 	"time"
@@ -53,5 +54,14 @@ func GetCurrentTrains(w http.ResponseWriter, _ *http.Request) {
 	resp := u.Message(true, "success")
 
 	resp["data"] = currentTrains
+	u.Respond(w, resp)
+}
+
+func GetUpcomingTrains(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	station := vars["station"]
+
+	resp := u.Message(true, "success")
+	resp["station"] = station
 	u.Respond(w, resp)
 }
