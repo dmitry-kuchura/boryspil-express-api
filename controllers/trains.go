@@ -39,8 +39,8 @@ func GetCurrentTrains(w http.ResponseWriter, r *http.Request) {
 	var data = trains.Trains
 
 	for _, train := range data {
-		trainTimeDeparture := u.GetTrainTimeDeparture(train)
-		trainTimeArrival := u.GetTrainTimeArrival(train)
+		trainTimeDeparture := u.GetTrainTimeDeparture(train, currentTime)
+		trainTimeArrival := u.GetTrainTimeArrival(train, currentTime)
 
 		diffDeparture := currentTime.Sub(trainTimeDeparture)
 		diffArrival := currentTime.Sub(trainTimeArrival)
