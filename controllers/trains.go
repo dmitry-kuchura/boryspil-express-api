@@ -13,25 +13,25 @@ import (
 type Trains m.Trains
 type Train = m.Train
 
-func GetTrains(w http.ResponseWriter, r *http.Request) {
+func GetTrains(w http.ResponseWriter, _ *http.Request) {
 	byteValue, _ := u.OpenFile("./database/outbound.json")
 
 	var trains Trains
 
-	json.Unmarshal(byteValue, &trains)
+	_ = json.Unmarshal(byteValue, &trains)
 
 	resp := u.Message(true, "success")
 	resp["data"] = trains
 	u.Respond(w, resp)
 }
 
-func GetCurrentTrains(w http.ResponseWriter, r *http.Request) {
+func GetCurrentTrains(w http.ResponseWriter, _ *http.Request) {
 	byteValue, _ := u.OpenFile("./database/outbound.json")
 
 	var trains Trains
 	var currentTrains []Train
 
-	json.Unmarshal(byteValue, &trains)
+	_ = json.Unmarshal(byteValue, &trains)
 
 	location, _ := time.LoadLocation("Europe/Kiev")
 	currentTime := time.Now().In(location)
