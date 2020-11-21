@@ -26,12 +26,14 @@ func GetTrains(w http.ResponseWriter, _ *http.Request) {
 }
 
 func GetCurrentTrains(w http.ResponseWriter, _ *http.Request) {
-	byteValue, _ := u.OpenFile("./database/outbound.json")
+	outboundData, _ := u.OpenFile("./database/outbound.json")
+	inboundData, _ := u.OpenFile("./database/inbound.json")
 
 	var trains Trains
 	var currentTrains []Train
 
-	_ = json.Unmarshal(byteValue, &trains)
+	_ = json.Unmarshal(outboundData, &trains)
+	_ = json.Unmarshal(inboundData, &trains)
 
 	location, _ := time.LoadLocation("Europe/Kiev")
 	currentTime := time.Now().In(location)

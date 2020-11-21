@@ -7,7 +7,7 @@ import (
 )
 
 func OpenFile(file string) ([]byte, error) {
-	jsonFile, err := os.Open("./database/outbound.json")
+	jsonFile, err := os.Open(file)
 	if err != nil {
 		fmt.Println(err)
 	}
