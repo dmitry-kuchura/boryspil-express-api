@@ -6,10 +6,32 @@ services:
     container_name: boryspil_express_api
     build:
       context: .
-      dockerfile: ./.docker/Dockerfile
+      dockerfile: .docker/go/Dockerfile
     working_dir: /app
     volumes:
       - .:/app
     ports:
       - "8080:8080"
     restart: unless-stopped
+  mongo:
+    container_name: boryspil_express_mongo
+    image: mongo:latest
+    environment:
+      MONGODB_USER: "${MONGO_USER}"
+      MONGODB_DATABASE: "${DATABASE}"
+      MONGODB_PASS: "${MONGO_PASSWORD}"
+      MONGODB_DATA_DIR: /data/db
+      MONDODB_LOG_DIR: /dev/null
+    ports:
+      - 27017:27017
+    volumes:
+      - .docker/mongo:/data/db
+
+    mongo-express:
+      container_name: boryspil_express_mongo-express
+      image: mongo-express
+      ports:
+        - 8081:8081
+      environment:
+        ME_CONFIG_MONGODB_ADMINUSERNAME: root
+        ME_CONFIG_MONGODB_ADMINPASSWORD: secret
