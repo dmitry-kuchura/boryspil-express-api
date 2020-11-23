@@ -21,9 +21,11 @@ func main() {
 	router := mux.NewRouter()
 	subRouters := router.PathPrefix("/api").Subrouter()
 
-	subRouters.HandleFunc("/trains", c.GetTrains).Methods("GET")
-	subRouters.HandleFunc("/current", c.GetCurrentTrains).Methods("GET")
+	subRouters.HandleFunc("/trains", c.GetTrains).Methods("GET")         // DONE
+	subRouters.HandleFunc("/current", c.GetCurrentTrains).Methods("GET") // DONE
 	subRouters.HandleFunc("/upcoming/{station}", c.GetUpcomingTrains).Methods("GET")
+	subRouters.HandleFunc("/train/{number:[0-9]+}", c.GetTrainInfo).Methods("GET") // DONE
+	subRouters.HandleFunc("/station/{station}", c.GetStationInfo).Methods("GET")
 
 	port := os.Getenv("PORT")
 	if port == "" {

@@ -2,9 +2,11 @@ package api
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/gorilla/mux"
 	"math"
 	"net/http"
+	"strconv"
 	"time"
 
 	m "boryspil-express-api/models"
@@ -15,7 +17,7 @@ type Trains m.Trains
 type Train = m.Train
 
 func GetTrains(w http.ResponseWriter, _ *http.Request) {
-	byteValue, _ := u.OpenFile("./database/outbound.json")
+	byteValue, _ := u.OpenFile("./database/trains.json")
 
 	var trains Trains
 
@@ -27,14 +29,12 @@ func GetTrains(w http.ResponseWriter, _ *http.Request) {
 }
 
 func GetCurrentTrains(w http.ResponseWriter, _ *http.Request) {
-	outboundData, _ := u.OpenFile("./database/outbound.json")
-	inboundData, _ := u.OpenFile("./database/inbound.json")
+	trainsData, _ := u.OpenFile("./database/trains.json")
 
 	var trains Trains
 	var currentTrains []Train
 
-	_ = json.Unmarshal(outboundData, &trains)
-	_ = json.Unmarshal(inboundData, &trains)
+	_ = json.Unmarshal(trainsData, &trains)
 
 	location, _ := time.LoadLocation("Europe/Kiev")
 	currentTime := time.Now().In(location)
@@ -54,7 +54,6 @@ func GetCurrentTrains(w http.ResponseWriter, _ *http.Request) {
 	}
 
 	resp := u.Message(true, "success")
-
 	resp["data"] = currentTrains
 	u.Respond(w, resp)
 }
@@ -65,5 +64,32 @@ func GetUpcomingTrains(w http.ResponseWriter, r *http.Request) {
 
 	resp := u.Message(true, "success")
 	resp["station"] = station
+	u.Respond(w, resp)
+}
+
+func GetTrainInfo(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	trainNumber, _ := strconv.Atoi(vars["number"])
+
+	var trains Trains
+	var currentTrain Train
+
+	trainsData, _ := u.OpenFile("./database/trains.json")
+
+	_ = json.Unmarshal(trainsData, &trains)
+
+	var data = trains.Trains
+
+	for _, train := range data {
+		fmt.Println(trainNumber)
+		fmt.Println(train.Number)
+
+		if trainNumber == train.Number {
+			currentTrain = train
+		}
+	}
+
+	resp := u.Message(true, "success")
+	resp["train"] = currentTrain
 	u.Respond(w, resp)
 }
