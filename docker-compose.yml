@@ -6,7 +6,7 @@ services:
     container_name: boryspil_express_api
     build:
       context: .
-      dockerfile: ./.docker/Dockerfile
+      dockerfile: .docker/Dockerfile
     working_dir: /app
     volumes:
       - .:/app
