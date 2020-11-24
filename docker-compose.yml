@@ -13,6 +13,7 @@ services:
     ports:
       - "8080:8080"
     restart: unless-stopped
+
   mongo:
     container_name: boryspil_express_mongo
     image: mongo:latest
@@ -23,15 +24,16 @@ services:
       MONGODB_DATA_DIR: /data/db
       MONDODB_LOG_DIR: /dev/null
     ports:
-      - 27017:27017
+      - "27017:27017"
     volumes:
       - .docker/mongo:/data/db
+    restart: unless-stopped
 
-    mongo-express:
-      container_name: boryspil_express_mongo-express
-      image: mongo-express
-      ports:
-        - 8081:8081
-      environment:
-        ME_CONFIG_MONGODB_ADMINUSERNAME: root
-        ME_CONFIG_MONGODB_ADMINPASSWORD: secret
+  mongo-express:
+    container_name: boryspil_express_mongo-express
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: secret
