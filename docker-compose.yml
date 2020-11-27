@@ -16,8 +16,7 @@ services:
 
   mongo:
     container_name: boryspil_express_db
-    build:
-      dockerfile: .docker/mongo/Dockerfile
+    build: .docker/mongo/Dockerfile
     volumes:
       - .docker/mongo/data:/data/db
       - .docker/mongo/mongo_config:/data/configdb
