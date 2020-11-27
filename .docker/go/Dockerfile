@@ -1,5 +1,7 @@
 FROM golang:alpine
 
+LABEL maintainer="Dmytro Kuchrua <kuchura.d@gmail.com>"
+
 # Set necessary environmet variables needed for our image
 ENV GO111MODULE=on \
     CGO_ENABLED=0 \
