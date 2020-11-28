@@ -16,10 +16,13 @@ services:
 
   mongo:
     container_name: boryspil_express_db
-    build: .docker/mongo/Dockerfile
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITBD_DATABASE: boryspil_db
     volumes:
-      - .docker/mongo/data:/data/db
-      - .docker/mongo/mongo_config:/data/configdb
+      - .docker/mongo:/data/db
     ports:
       - "27017:27017"
     restart: unless-stopped
