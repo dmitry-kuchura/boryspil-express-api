@@ -16,7 +16,9 @@ services:
 
   mongo:
     container_name: boryspil_express_db
-    build: .docker/mongo/Dockerfile
+    build:
+      context: .
+      dockerfile: .docker/mongo/Dockerfile
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
