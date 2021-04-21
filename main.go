@@ -10,6 +10,7 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
+	"github.com/rs/cors"
 )
 
 func main() {
@@ -21,11 +22,16 @@ func main() {
 	router := mux.NewRouter()
 	subRouters := router.PathPrefix("/api").Subrouter()
 
-	subRouters.HandleFunc("/trains", c.GetTrains).Methods("GET")         // DONE
-	subRouters.HandleFunc("/current", c.GetCurrentTrains).Methods("GET") // DONE
-	subRouters.HandleFunc("/upcoming/{station}", c.GetUpcomingTrains).Methods("GET")
-	subRouters.HandleFunc("/train/{number:[0-9]+}", c.GetTrainInfo).Methods("GET") // DONE
-	subRouters.HandleFunc("/station/{station}", c.GetStationInfo).Methods("GET")
+	subRouters.HandleFunc("/trains", c.GetTrains).Methods("POST")
+	subRouters.HandleFunc("/current", c.GetCurrentTrains).Methods("GET")
+	subRouters.HandleFunc("/train/{number:[0-9]+}", c.GetTrainInfo).Methods("GET")
+	subRouters.HandleFunc("/traffic-hub/search/{traffic-hub}", c.GetStationInfo).Methods("GET")
+
+	handler := cors.New(cors.Options{
+		AllowedOrigins: []string{"*"},
+		AllowedMethods: []string{"GET", "POST", "OPTIONS", "PATCH"},
+		AllowedHeaders: []string{"Content-Type"},
+	}).Handler(router)
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -35,7 +41,7 @@ func main() {
 	fmt.Println("Server is listening...")
 	fmt.Println(port)
 
-	err = http.ListenAndServe(":"+port, router)
+	err = http.ListenAndServe(":"+port, handler)
 	if err != nil {
 		fmt.Print(err)
 	}

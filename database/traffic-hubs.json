@@ -1,0 +1,28 @@
+{
+  "traffic-hubs": [
+    {
+      "code": 320098,
+      "name": "ВЫДУБЫЧИ",
+      "countryCode": "UA",
+      "type": "railway"
+    },
+    {
+      "code": 320007,
+      "name": "ДАРНИЦА",
+      "countryCode": "UA",
+      "type": "railway"
+    },
+    {
+      "code": 320308,
+      "name": "КИЕВ-ПАССАЖИРСКИЙ",
+      "countryCode": "UA",
+      "type": "city"
+    },
+    {
+      "code": 322604,
+      "name": "АЭРОПОРТ",
+      "countryCode": "UA",
+      "type": "airport"
+    }
+  ]
+}

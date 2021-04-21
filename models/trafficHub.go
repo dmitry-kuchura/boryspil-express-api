@@ -1,7 +1,9 @@
 package models
 
 type TrafficHub struct {
-	//Code     string `json:"code"`
-	Name     string `json:"name"`
-	FullName string `json:"fullName"`
+	Code        int    `json:"code"`
+	Name        string `json:"name"`
+	CountryCode string `json:"countryCode"`
+	FullName    string `json:"fullName"`
+	Type        string `json:"type"`
 }

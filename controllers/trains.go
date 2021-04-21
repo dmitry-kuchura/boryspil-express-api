@@ -24,7 +24,7 @@ func GetTrains(w http.ResponseWriter, _ *http.Request) {
 	_ = json.Unmarshal(byteValue, &trains)
 
 	resp := u.Message(true, "success")
-	resp["data"] = trains
+	resp["data"] = trains.Trains
 	u.Respond(w, resp)
 }
 
